@@ -34,30 +34,34 @@ To write and execute an Assembly language program to perform the factorial of a 
 ## PROGRAM
 ```asm
 ORG 0000H
-MOV DPTR,#4500H
-MOVX A,@DPTR
-MOV R0,A
-INC DPTR
-ACALL FACTORIAL
-MOVX @DPTR,A
-SJMP THIN
-FACTORIAL:DEC R0
-CJNE R0,#01H,PRODUCT
-SJMP THICK
-PRODUCT:MOV B,R0
-MUL AB
-ACALL FACTORIAL
-THICK: RET
-THIN:RET
-END
+ MOV DPTR,#4500H 
+ MOVX A,@DPTR 
+ MOV R0,A 
+ INC DPTR 
+ ACALL FACTORIAL 
+ MOVX @DPTR,A 
+ SJMP THIN 
 
+FACTORIAL: DEC R0
+ CJNE R0,#01H,PRODUCT
+ SJMP THICK 
+
+PRODUCT: MOV B,R0 
+ MUL AB
+ ACALL FACTORIAL 
+
+THICK: RET 
+THIN: RET 
+END
 ```
 OUTPUT
 
 (Keil output screenshot can be inserted here)
+<img width="1920" height="1020" alt="Screenshot 2026-02-20 110116" src="https://github.com/user-attachments/assets/448f1394-7a97-4877-a56b-63e76d02cbca" />
 
 ---
 MANUAL CALCULATIONS
+<img width="991" height="543" alt="image" src="https://github.com/user-attachments/assets/f28e0113-88e4-41f5-be10-3dc260a2ae4e" />
 
 ---
 
